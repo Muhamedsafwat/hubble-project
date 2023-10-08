@@ -14,7 +14,7 @@ const Hero = () => {
           transition={{ duration: 0.4 }}
         >
           <h1 className=" text-center text-5xl lg:text-[90px] font-semibold mt-[-6.5rem]">
-            HUMAN SPACEFLIGHT
+            Hubble
           </h1>
           <p className="mt-2 text-center">Making life multiplanetary</p>
         </motion.div>
