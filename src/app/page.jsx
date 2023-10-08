@@ -1,12 +1,5 @@
-import {
-  Gallery,
-  Hero,
-  Destinations,
-  Missions,
-  Suit,
-  Vehicles,
-  History,
-} from "@/sections";
+import { Gallery, Hero, Destinations, History } from "@/sections";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -14,10 +7,8 @@ export default function Home() {
       <Hero />
       <Gallery />
       <Destinations />
-      <Missions />
-      <Suit />
-      <Vehicles />
       <History />
+      <Footer />
     </main>
   );
 }

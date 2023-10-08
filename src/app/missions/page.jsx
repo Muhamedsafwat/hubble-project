@@ -9,6 +9,7 @@ const Page = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
+  const [filtered, setFiltered] = useState();
 
   useEffect(() => {
     const getData = () => {
@@ -16,12 +17,26 @@ const Page = () => {
         .get(`${process.env.NEXT_PUBLIC_API_URL}/api/missions`)
         .then((res) => {
           setData(res.data);
+          setFiltered(res.data);
           console.log(res.data);
           setLoading(false);
         })
         .catch((err) => console.log(err));
     };
     getData();
+  }, []);
+
+  useEffect(() => {
+    const handleChange = () => {
+      if (filter != "all") {
+        setFiltered((data) =>
+          data.filter((item) => item.properties[3].text == filter)
+        );
+      } else {
+        setFiltered(data);
+      }
+    };
+    handleChange();
   }, [filter]);
 
   return (
@@ -31,20 +46,49 @@ const Page = () => {
         <aside className="text-lg flex flex-col gap-2">
           <h2 className="text-2xl font-semi-bold mb-2">Status</h2>
           <div className="flex gap-2">
-            <input id="past" type="checkbox" />
+            <input
+              id="past"
+              type="radio"
+              name="filter"
+              onClick={() => setFilter("Past")}
+            />
             <label htmlFor="past">Past</label>
           </div>
           <div className="flex gap-2">
-            <input id="current" type="checkbox" />
+            <input
+              id="current"
+              type="radio"
+              name="filter"
+              onClick={() => setFilter("Current")}
+            />
             <label htmlFor="current">Current</label>
           </div>
           <div className="flex gap-2">
-            <input id="future" type="checkbox" />
+            <input
+              id="future"
+              type="radio"
+              name="filter"
+              onClick={() => setFilter("Future")}
+            />
             <label htmlFor="future">Future</label>
           </div>
           <div className="flex gap-2">
-            <input id="proposed" type="checkbox" />
+            <input
+              id="proposed"
+              type="radio"
+              name="filter"
+              onClick={() => setFilter("Proposed")}
+            />
             <label htmlFor="propsed">Proposed</label>
+          </div>
+          <div className="flex gap-2">
+            <input
+              id="all"
+              type="radio"
+              name="filter"
+              onClick={() => setFilter("all")}
+            />
+            <label htmlFor="all">All</label>
           </div>
         </aside>
         {loading ? (
@@ -53,7 +97,7 @@ const Page = () => {
           </div>
         ) : (
           <main className="flex-1 px-20 flex flex-col">
-            {data.map((item, index) => (
+            {filtered.map((item, index) => (
               <div key={index} className="border-b-2 border-gray-500 py-10">
                 <Link href={`/missions/${item.slug}`} className="flex gap-32">
                   <div className="w-3/4">

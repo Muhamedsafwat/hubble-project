@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "SpaceX || Human spaceflight",
@@ -17,7 +16,6 @@ export default function RootLayout({ children }) {
       <body className={inter.className + "w-screen overflow-x-hidden"}>
         <NavBar />
         {children}
-        <Footer />
       </body>
     </html>
   );

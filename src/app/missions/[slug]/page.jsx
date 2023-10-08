@@ -50,7 +50,7 @@ const page = async ({ params }) => {
         {data.body.map((item, index) => (
           <section key={index}>
             <h2 className="text-4xl font-medium mt-16 mb-8">{item.heading}</h2>
-            <p className="text-lg">{item.details}</p>
+            <p className="text-lg">{item.text}</p>
           </section>
         ))}
       </main>
