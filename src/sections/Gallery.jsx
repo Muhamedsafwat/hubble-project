@@ -1,31 +1,32 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Gallery = () => {
   const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 4,
     slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: "350px",
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 700,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 3,
           slidesToScroll: 1,
           centerPadding: "30px",
         },
@@ -33,7 +34,7 @@ const Gallery = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
           centerPadding: "30px",
         },
@@ -47,17 +48,30 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery" className="pb-20 w-screen overflow-hidden">
+    <section
+      id="gallery"
+      className="py-20 pb-40 px-16 w-screen overflow-hidden"
+    >
       <Slider {...sliderSettings}>
         {gallery.map((item, index) => (
           <div key={index} className="p-2">
-            <div className="relative aspect-[4/5] lg:h-[100vh] lg:aspect-auto">
+            <div className="relative aspect-[4/5] lg:h-[80vh] lg:aspect-auto group">
               <Image
                 className="object-cover"
                 fill
-                src={item}
+                src={item.img}
                 alt={`project image #${index}`}
               />
+              <div className="absolute w-full h-full bg-black bg-opacity-30 group-hover:bg-opacity-0 duration-300">
+                <div className="absolute bottom-0 px-5 py-8 flex justify-between w-full items-center">
+                  <h3 className="text-2xl font-semibold capitalize">
+                    {item.title}
+                  </h3>
+                  <div className="rounded-full p-1 bg-red-600 flex justify-center items-center">
+                    <AiOutlineArrowRight />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         ))}
@@ -67,10 +81,11 @@ const Gallery = () => {
 };
 
 const gallery = [
-  "/launch-crop.jpg",
-  "/on-orbit.jpg",
-  "/Splashdown_Photo_01.jpg",
-  "/Training_01.jpg",
+  { img: "/launch-crop.jpg", title: "International space station news" },
+  { img: "/on-orbit.jpg", title: "climate change" },
+  { img: "/Splashdown_Photo_01.jpg", title: "value of NASA" },
+  { img: "/Training_01.jpg", title: "commercial crew program" },
+  { img: "/Splashdown_Photo_01.jpg", title: "value of NASA" },
 ];
 
 export default Gallery;

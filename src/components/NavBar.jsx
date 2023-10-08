@@ -28,7 +28,7 @@ const NavBar = () => {
       <h1 className="text-2xl font-semibold tracking-widest ml-5 lg:ml-20 flex-1 lg:flex-none text-center">
         SPACEX
       </h1>
-      <nav className=" gap-5 items-center mt-2 ml-28 hidden :flex">
+      <nav className=" gap-5 items-center mt-2 ml-28 hidden lg:flex">
         {links.map((item, index) => (
           <li
             key={index}
