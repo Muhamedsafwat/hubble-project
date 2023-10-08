@@ -26,7 +26,7 @@ const missionSchema = new Schema({
   body: [
     {
       heading: String,
-      details: String,
+      text: String,
     },
   ],
 });

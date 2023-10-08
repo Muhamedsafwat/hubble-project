@@ -1,44 +1,56 @@
 import React from "react";
 import Image from "next/image";
 
+import { notFound } from "next/navigation";
+
 import RelatedTopics from "@/components/RelatedTopics";
 
-const page = () => {
+async function getData(slug) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/missions/${slug}`,
+    {
+      next: { revalidate: 100 },
+    }
+  );
+  if (res.ok) {
+    return res.json();
+  } else {
+    return notFound();
+  }
+}
+
+const page = async ({ params }) => {
+  const data = await getData(params.slug);
   return (
     <>
       <header>
         <div className="w-full h-screen relative">
-          <Image src="/mission/test.png" fill className="object-cover" />
+          <Image src={data.cover} fill className="object-cover" />
         </div>
         <div className="absolute top-0 left-0 h-full pl-40 w-full flex flex-col items-start justify-center bg-gradient-to-r from-black to-transparent">
           <div className="w-1/3">
-            <h1 className="text-7xl font-extrabold">ASTHROS</h1>
-            <p className="text-2xl mt-8">
-              ASTHROS (short for Astrophysics Stratospheric Telescope for High
-              Spectral Resolution Observations at Submillimeter-wavelengths) is
-              a high-altitude balloon mission for studying astrophysical
-              phenomena.
-            </p>
+            <h1 className="text-7xl font-extrabold">{data.title}</h1>
+            <p className="text-2xl mt-8 line-clamp-6">{data.description}</p>
           </div>
         </div>
       </header>
       <div className="flex justify-end relative mt-[-3rem]">
         <div className="flex w-[80vw] bg-slate-800 px-10 py-14 gap-20">
-          {cards.map((item, index) => (
+          {data.properties.map((item, index) => (
             <div key={index}>
               <h2 className="uppercase text-teal-400 font-medium mb-2">
                 {item.label}
               </h2>
-              <p className="text-lg">{item.details}</p>
+              <p className="text-lg">{item.text}</p>
             </div>
           ))}
         </div>
       </div>
       <main className="px-40 mt-20 max-w-6xl text-2xl">
-        {sections.map((item, index) => (
+        {data.body.map((item, index) => (
           <section key={index}>
             <h2 className="text-4xl font-medium mt-16 mb-8">{item.heading}</h2>
-            <p className="text-lg">{item.text}</p>
+            <p className="text-lg">{item.details}</p>
           </section>
         ))}
       </main>

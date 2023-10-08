@@ -25,16 +25,18 @@ const NavBar = () => {
       }}
       className="h-24 px-2 lg:px-16 flex items-center fixed top-0 w-screen z-10 duration-300"
     >
-      <h1 className="text-2xl font-semibold tracking-widest ml-5 lg:ml-20 flex-1 lg:flex-none text-center">
-        SPACEX
-      </h1>
-      <nav className=" gap-5 items-center mt-2 ml-28 hidden lg:flex">
+      <Link href="/">
+        <h1 className="text-2xl font-semibold tracking-widest ml-5 flex-1 lg:flex-none text-center">
+          SPACEX
+        </h1>
+      </Link>
+      <nav className=" gap-5 flex-1 items-center justify-center mt-2 hidden lg:flex">
         {links.map((item, index) => (
           <li
             key={index}
             className="list-none uppercase text-[13.5px] font-bold group"
           >
-            <Link href="#">{item}</Link>
+            <Link href={item.href}>{item.label}</Link>
             <motion.div className="bg-white h-[.5px] w-0 group-hover:w-full duration-300" />
           </li>
         ))}
@@ -97,14 +99,11 @@ const NavBar = () => {
 };
 
 const links = [
-  "falcon 9",
-  "falcon heavy",
-  "dragon",
-  "starship",
-  "juman spaceflight",
-  "rideshare",
-  "starshield",
-  "starlink",
+  { label: "missions", href: "/missions" },
+  { label: "dashboard", href: "/dashboard" },
+  { label: "climate change", href: "/climate-change" },
+  { label: "our team", href: "/our-team" },
+  { label: "ISS", href: "/iss" },
 ];
 
 const menuLinks = ["mission", "launches", "careers", "updates", "shop"];

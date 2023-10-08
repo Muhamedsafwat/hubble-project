@@ -2,6 +2,8 @@
 import React from "react";
 import Image from "next/image";
 
+import Link from "next/link";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -54,7 +56,7 @@ const Gallery = () => {
     >
       <Slider {...sliderSettings}>
         {gallery.map((item, index) => (
-          <div key={index} className="p-2">
+          <Link href={item.href} key={index} className="p-2">
             <div className="relative aspect-[4/5] lg:h-[80vh] lg:aspect-auto group">
               <Image
                 className="object-cover"
@@ -73,7 +75,7 @@ const Gallery = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </Slider>
     </section>
@@ -81,11 +83,22 @@ const Gallery = () => {
 };
 
 const gallery = [
-  { img: "/launch-crop.jpg", title: "International space station news" },
-  { img: "/on-orbit.jpg", title: "climate change" },
-  { img: "/Splashdown_Photo_01.jpg", title: "value of NASA" },
-  { img: "/Training_01.jpg", title: "commercial crew program" },
-  { img: "/Splashdown_Photo_01.jpg", title: "value of NASA" },
+  {
+    img: "/launch-crop.jpg",
+    title: "International space station news",
+    href: "/iss",
+  },
+  { img: "/on-orbit.jpg", title: "climate change", href: "/climate-change" },
+  {
+    img: "/Splashdown_Photo_01.jpg",
+    title: "value of NASA",
+    href: "/value-of-nasa",
+  },
+  {
+    img: "/Training_01.jpg",
+    title: "commercial crew program",
+    href: "/commercial-crew-program",
+  },
 ];
 
 export default Gallery;
