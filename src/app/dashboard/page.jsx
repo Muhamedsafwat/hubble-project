@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const page = () => {
+const Page = () => {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [description, setDescription] = useState("");
