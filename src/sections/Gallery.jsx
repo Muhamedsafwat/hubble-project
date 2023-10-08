@@ -15,7 +15,7 @@ const Gallery = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [
       {
@@ -85,19 +85,14 @@ const Gallery = () => {
 const gallery = [
   {
     img: "/launch-crop.jpg",
-    title: "International space station news",
-    href: "/iss",
+    title: "Missions",
+    href: "/missions",
   },
   { img: "/on-orbit.jpg", title: "climate change", href: "/climate-change" },
   {
-    img: "/Splashdown_Photo_01.jpg",
-    title: "value of NASA",
-    href: "/value-of-nasa",
-  },
-  {
     img: "/Training_01.jpg",
-    title: "commercial crew program",
-    href: "/commercial-crew-program",
+    title: "Our team",
+    href: "/our-team",
   },
 ];
 

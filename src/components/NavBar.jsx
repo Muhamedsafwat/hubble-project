@@ -30,17 +30,7 @@ const NavBar = () => {
           Hubble
         </h1>
       </Link>
-      <nav className=" gap-5 flex-1 items-center justify-center mt-2 hidden lg:flex">
-        {links.map((item, index) => (
-          <li
-            key={index}
-            className="list-none uppercase text-[13.5px] font-bold group"
-          >
-            <Link href={item.href}>{item.label}</Link>
-            <motion.div className="bg-white h-[.5px] w-0 group-hover:w-full duration-300" />
-          </li>
-        ))}
-      </nav>
+
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="ml-auto mr-3 relative w-5 h-5 z-10"
@@ -77,16 +67,16 @@ const NavBar = () => {
           className="absolute top-0 right-0 w-48 lg:w-80 px-10 pt-20 h-screen bg-black"
         >
           <ul className="w-full">
-            {menuLinks.map((item, index) => (
+            {links.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, translateY: 10 }}
                 animate={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.2, delay: 0.08 * (index + 1) }}
               >
-                <Link href="#">
+                <Link href={item.href}>
                   <li className="px-4 py-3 uppercase text-right border-b-[1px] border-b-gray-800 w-full hover:text-gray-500 duration-300">
-                    {item}
+                    {item.label}
                   </li>
                 </Link>
               </motion.div>
@@ -103,9 +93,6 @@ const links = [
   { label: "dashboard", href: "/dashboard" },
   { label: "climate change", href: "/climate-change" },
   { label: "our team", href: "/our-team" },
-  { label: "ISS", href: "/iss" },
 ];
-
-const menuLinks = ["mission", "launches", "careers", "updates", "shop"];
 
 export default NavBar;
