@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Page = () => {
+  const [loading, setLoading] = useState(false);
+
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [description, setDescription] = useState("");
@@ -36,6 +38,7 @@ const Page = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setLoading(true);
     const reqBody = {
       title,
       slug,
@@ -52,7 +55,10 @@ const Page = () => {
 
     axios
       .post(`${process.env.NEXT_PUBLIC_API_URL}/api/missions`, { ...reqBody })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        setLoading(false);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -156,10 +162,11 @@ const Page = () => {
           </button>
         </div>
         <button
+          disabled={loading}
           type="submit"
           className="rounded-md bg-gray-500 p-5 w-52 mx-auto"
         >
-          Submit
+          {loading ? "Loading" : "Submit"}
         </button>
       </form>
     </div>
