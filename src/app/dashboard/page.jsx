@@ -51,7 +51,7 @@ const Page = () => {
     };
 
     axios
-      .post("/api/missions", { ...reqBody })
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/api/missions`, { ...reqBody })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
