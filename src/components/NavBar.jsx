@@ -27,7 +27,7 @@ const NavBar = () => {
     >
       <Link href="/">
         <h1 className="text-2xl font-semibold tracking-widest ml-5 flex-1 lg:flex-none text-center">
-          SPACEX
+          Hubble
         </h1>
       </Link>
       <nav className=" gap-5 flex-1 items-center justify-center mt-2 hidden lg:flex">
