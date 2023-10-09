@@ -23,13 +23,24 @@ const NavBar = () => {
         opacity: isHidden ? 0 : 1,
         translateY: isHidden ? -100 : 0,
       }}
-      className="h-24 px-2 lg:px-16 flex items-center fixed top-0 w-screen z-10 duration-300"
+      className="h-24 px-2 lg:px-16 flex items-center fixed top-0 w-screen z-10 duration-300 bg-gradient-to-b from-gray-900 to-transparent "
     >
       <Link href="/">
-        <h1 className="text-2xl font-semibold tracking-widest ml-5 flex-1 lg:flex-none text-center">
+        <h1 className="text-2xl font-semibold tracking-widest ml-5 flex-1 lg:flex-none text-center font-mono">
           Hubble
         </h1>
       </Link>
+      <nav className=" gap-5 items-center mt-2 hidden lg:flex flex-1 justify-center mr-8">
+        {links.map((item, index) => (
+          <li
+            key={index}
+            className="list-none uppercase text-[13.5px] font-bold group"
+          >
+            <Link href={item.href}>{item.label}</Link>
+            <motion.div className="bg-white h-[.5px] w-0 group-hover:w-full duration-300" />
+          </li>
+        ))}
+      </nav>
 
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -90,9 +101,9 @@ const NavBar = () => {
 
 const links = [
   { label: "missions", href: "/missions" },
-  { label: "dashboard", href: "/dashboard" },
   { label: "climate change", href: "/climate-change" },
   { label: "our team", href: "/our-team" },
+  { label: "dashboard", href: "/dashboard" },
 ];
 
 export default NavBar;

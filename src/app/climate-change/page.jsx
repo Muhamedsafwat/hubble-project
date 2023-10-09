@@ -6,7 +6,7 @@ import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 const Page = () => {
   return (
     <div>
-      <section className="relative h-[90vh] ">
+      <section className="relative h-screen">
         <Image src="/climate-change.webp" fill className="object-cover" />
         <div className="absolute w-2/3 px-20 h-full bg-gradient-to-r from-black to-transparent bg-opacity-40 flex flex-col justify-center">
           <h1 className="text-7xl font-semibold">Climate Change</h1>

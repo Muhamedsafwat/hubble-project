@@ -88,7 +88,11 @@ const gallery = [
     title: "Missions",
     href: "/missions",
   },
-  { img: "/on-orbit.jpg", title: "climate change", href: "/climate-change" },
+  {
+    img: "/climate-change.webp",
+    title: "climate change",
+    href: "/climate-change",
+  },
   {
     img: "/Training_01.jpg",
     title: "Our team",

@@ -1,17 +1,21 @@
+"use client";
 import React from "react";
 import Image from "next/image";
-
 import Link from "next/link";
+
+import { motion } from "framer-motion";
 
 import { BiCategoryAlt } from "react-icons/bi";
 import { CiLocationOn, CiMail } from "react-icons/ci";
 
 const Page = () => {
   return (
-    <div className="py-36 flex flex-col items-center">
-      <h1 className="text-center text-6xl font-semibold">Our Team</h1>
+    <div className="py-28 flex flex-col items-center">
+      <h1 className="text-center text-6xl font-semibold mb-10">Our Team</h1>
       {members.map((item, index) => (
-        <div
+        <motion.div
+          initial={{ x: 10 }}
+          whileInView={{ x: 0 }}
           key={index}
           className="flex gap-10 even:flex-row-reverse max-w-6xl w-full group"
         >
@@ -36,7 +40,7 @@ const Page = () => {
               <Link href={`mailto:${item.email}`}>{item.email}</Link>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
