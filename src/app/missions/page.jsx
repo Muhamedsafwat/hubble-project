@@ -26,19 +26,6 @@ const Page = () => {
     getData();
   }, []);
 
-  useEffect(() => {
-    const handleChange = () => {
-      if (filter != "all") {
-        setFiltered((data) =>
-          data.filter((item) => item.properties[3].text == filter)
-        );
-      } else {
-        setFiltered(data);
-      }
-    };
-    handleChange();
-  }, [filter]);
-
   return (
     <div className="px-16">
       <h1 className="mt-32 text-5xl font-bold">Missions</h1>
@@ -97,24 +84,28 @@ const Page = () => {
           </div>
         ) : (
           <main className="flex-1 px-20 flex flex-col">
-            {filtered.map((item, index) => (
-              <div key={index} className="border-b-2 border-gray-500 py-10">
-                <Link href={`/missions/${item.slug}`} className="flex gap-32">
-                  <div className="w-3/4">
-                    <p className="text-lg mb-5">
-                      Mission | {item.properties[3].text}{" "}
-                    </p>
-                    <h2 className="text-2xl font-medium">{item.title}</h2>
-                    <p className="line-clamp-3 text-xl mt-5">
-                      {item.description}
-                    </p>
-                  </div>
-                  <div className="relative w-1/4 aspect-square">
-                    <Image src={item.cover} fill className="object-cover" />
-                  </div>
-                </Link>
-              </div>
-            ))}
+            {data
+              .filter(
+                (item) => item.properties[3].text == filter || filter == "all"
+              )
+              .map((item, index) => (
+                <div key={index} className="border-b-2 border-gray-500 py-10">
+                  <Link href={`/missions/${item.slug}`} className="flex gap-32">
+                    <div className="w-3/4">
+                      <p className="text-lg mb-5">
+                        Mission | {item.properties[3].text}{" "}
+                      </p>
+                      <h2 className="text-2xl font-medium">{item.title}</h2>
+                      <p className="line-clamp-3 text-xl mt-5">
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="relative w-1/4 aspect-square">
+                      <Image src={item.cover} fill className="object-cover" />
+                    </div>
+                  </Link>
+                </div>
+              ))}
           </main>
         )}
       </div>
