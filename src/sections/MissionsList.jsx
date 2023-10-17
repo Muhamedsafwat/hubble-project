@@ -9,7 +9,7 @@ const MissionsList = ({ missions }) => {
   return (
     <div className="px-16">
       <h1 className="mt-32 text-5xl font-bold">Missions</h1>
-      <div className="flex mt-16 gap-20">
+      <div className="flex mt-16 gap-20 sticky top-48">
         <aside className="text-lg flex flex-col gap-2">
           <h2 className="text-2xl font-semi-bold mb-2">Status</h2>
           <div className="flex gap-2">

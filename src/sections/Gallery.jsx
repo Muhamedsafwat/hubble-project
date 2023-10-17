@@ -21,24 +21,24 @@ const Gallery = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 700,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 1,
           slidesToScroll: 1,
-          centerPadding: "30px",
+          centerPadding: "0px",
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
-          centerPadding: "30px",
+          centerPadding: "0px",
         },
       },
     ],
@@ -52,7 +52,7 @@ const Gallery = () => {
   return (
     <section
       id="gallery"
-      className="py-20 pb-40 px-16 w-screen overflow-hidden"
+      className="py-16 lg:pb-40 lg:px-16 w-screen overflow-hidden"
     >
       <Slider {...sliderSettings}>
         {gallery.map((item, index) => (
@@ -64,7 +64,7 @@ const Gallery = () => {
                 src={item.img}
                 alt={`project image #${index}`}
               />
-              <div className="absolute w-full h-full bg-black bg-opacity-30 group-hover:bg-opacity-0 duration-300">
+              <div className="absolute w-full h-full lg:bg-black bg-opacity-30 group-hover:bg-opacity-0 duration-300">
                 <div className="absolute bottom-0 px-5 py-8 flex justify-between w-full items-center">
                   <h3 className="text-2xl font-semibold capitalize">
                     {item.title}

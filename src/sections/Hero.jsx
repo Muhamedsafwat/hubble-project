@@ -13,10 +13,12 @@ const Hero = () => {
           whileInView={{ opacity: 1, translateY: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <h1 className="font-mono text-center text-5xl lg:text-[120px] font-semibold mt-[-6.5rem]">
-            HUBBLE
+          <h1 className="font-mono text-center text-7xl lg:text-[120px] font-semibold mt-[-6.5rem]">
+            Hubble
           </h1>
-          <p className="mt-2 text-center text-lg">Making life multiplanetary</p>
+          <p className="mt-2 text-center lg:text-lg">
+            Making life multiplanetary
+          </p>
         </motion.div>
         <Link href="/#gallery">
           <BsChevronDown
